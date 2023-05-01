@@ -10,6 +10,16 @@ def connect_db(app):
     db.init_app(app)
 
 
+def serialize(cupcake):
+    return {
+        "id": cupcake.id,
+        "flavor": cupcake.flavor,
+        "size": cupcake.size,
+        "rating": cupcake.rating,
+        "image": cupcake.image
+    }
+
+
 class Cupcake(db.Model):
     """ Cupcake model """
 
