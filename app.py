@@ -47,7 +47,7 @@ def create_cupcake():
     """ Create a cupcake with flavor, size, rating and image data from the body of the request. """
     flavor = request.json.get("flavor", None)
     size = request.json.get("size", None)
-    rating = request.json.get("rating", None)
+    rating = int(request.json.get("rating", None))
     image = request.json.get("image", None)
 
     if flavor and size and rating:
@@ -83,7 +83,7 @@ def update_cupcake(id):
 
     cupcake.flavor = request.json.get("flavor", cupcake.flavor)
     cupcake.size = request.json.get("size", cupcake.size)
-    cupcake.rating = request.json.get("rating", cupcake.rating)
+    cupcake.rating = int(request.json.get("rating", cupcake.rating))
     cupcake.image = request.json.get("image", cupcake.image)
 
     db.session.commit()
