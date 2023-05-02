@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}List of cupcakes{% endblock %}
+{%block content %}
+<h1 class="display-1 text-center">Cupcakes</h1>
+<div id="errors"></div>
+<h2 class="display-5">Create new cupcake</h2>
+<form id="new-cupcake-form">
+  <div class="mb-3" id="flavor">
+    <label for="flavor" class="form-label">Enter flavor:</label>
+    <input type="text" name="flavor" class="form-control" required/>
+  </div>
+  <div class="mb-3" id="size">
+    <label for="size" class="form-label">Enter size:</label>
+    <input type="text" name="size" class="form-control" required/>
+  </div>
+  <div class="mb-3" id="rating">
+    <label for="rating" class="form-label">Select a rating:</label>
+    <input type="number" name="rating" class="form-control" required/>
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Enter image URL:</label>
+    <input type="url" name="image" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<h2 class="display-5">List of cupcakes:</h2>
+<ul id="cupcake-container">
+  {% for cupcake in cupcakes %}
+  <li class="py-1">
+    <a href="/cupcakes/{{ cupcake.id }}">
+      Flavor: {{ cupcake.flavor }}. Size: {{ cupcake.size }}. Rating: {{ cupcake.rating }}
+    </a>
+    <button class="btn btn-danger btn-sm delete-cupcake" data-id="{{ cupcake.id }}">X</button>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
